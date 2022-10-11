@@ -1,0 +1,19 @@
+{
+  "name": "nodejs_express_mongodb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Josedeodo/NodeJS_Express_MongoDB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Josedeodo/NodeJS_Express_MongoDB/issues"
+  },
+  "homepage": "https://github.com/Josedeodo/NodeJS_Express_MongoDB#readme"
+}
