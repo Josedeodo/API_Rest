@@ -77,4 +77,24 @@ ruta.put('/:email', (req, res) => {
     }
 });
 
+//función asíncrona para inactivar un usuario
+async function desactivarUsuario(email){
+    let usuario = await Usuario.findOneAndUpdate({"email": email}, {
+        $set: {
+            estado: false
+        }
+    },{ new: true });
+    return usuario;
+}
+
+//End ponit de tipo DELETE para el recurso USUARIO
+    ruta.delete('/:email', (req, res) => {
+        let resultado = desactivarUsuario(req.params.email);
+        resultado.then(valor => {
+            res.json({
+                usuario: valor
+            })
+        });
+    });
+
 module.exports = ruta
