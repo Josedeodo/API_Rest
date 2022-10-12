@@ -97,4 +97,22 @@ async function desactivarUsuario(email){
         });
     });
 
+//función asíncrona para listar todos los usuarios activos
+async function listarUsuariosActivos(){
+    let usuarios = await Usuario.find({"estado": true});
+    return usuarios;
+}
+
+//End point de tipo GET para el recurso usuarios. Lista todos los usuarios
+ruta.get('/',(req, res) =>{
+    let resultado = listarUsuariosActivos();
+    resultado.then(usuarios =>{
+        res.json(usuarios)
+    }).catch(err => {
+        res.status(400).json({
+            err
+        })
+    })
+});
+
 module.exports = ruta
