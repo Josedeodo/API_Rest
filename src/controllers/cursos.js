@@ -2,8 +2,19 @@ const express = require('express');
 const Curso = require('../models/curso_model');
 const ruta = express.Router();
 
+//función asíncrona para listar los cursos activos
+async function listarCursosActivos(){
+    let cursos = await Curso.find({"estado": true});
+    return cursos;
+}
+
 ruta.get('/', (req, res)=>{
-    res.json('Respuesta a petición GET de CURSOS funcionando correctamente...');
+    let resultado = listarCursosActivos();
+    resultado.then(cursos =>{
+        res.json(cursos)
+    }).catch(err =>{
+        res.status(400).json(err)
+    })
 });
 
 //función asíncrona para crear cursos
@@ -71,5 +82,7 @@ ruta.delete('/:id', (req, res)=>{
         res.status(400).json(err);
     })
 })
+
+
 
 module.exports = ruta;
